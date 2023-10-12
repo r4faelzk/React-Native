@@ -11,11 +11,17 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{ title: "LOGIN", statusBarColor: 'purple' }}
+          options={{ title: "LOGIN", statusBarColor: 'blue' }}
+        />
+
+        <Stack.Screen
+          name="CreateUser"
+          component={CreateUser}
+          options={{ title: "CADASTRO", statusBarColor: 'blue' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,7 +1,7 @@
-import { StyleSheet, Text, SafeAreaView, TextInput, Image,TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, TextInput, Image, TouchableOpacity, View } from 'react-native';
 import Materialicons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-export default function Login() {
+export default function Login({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
 
@@ -29,6 +29,38 @@ export default function Login() {
       <TouchableOpacity style={styles.btnLogin}>
         <Text style={styles.txtLogin}>Fazer login</Text>
       </TouchableOpacity>
+      
+      {/* LOGIN ALTERNATIVO (REDES SOCIAIS) */}
+      <Text style={styles.logarcom}>
+            Logar com ...
+      </Text>
+
+      <View style={styles.botoes}>
+
+        <TouchableOpacity style={styles.btnLoginCom}>
+            <Image 
+              source={require("../assets/imagens/facebook.png")}
+            />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.btnLoginCom}>
+            <Image 
+              source={require("../assets/imagens/google.png")}
+            />
+        </TouchableOpacity>
+
+      </View>
+
+      {/* CRIAÇÃO DE USUÁRIO */}
+      <View style={styles.botoes}>
+        <TouchableOpacity
+          onPress={()=>{
+            navigation.navigate("CreateUser")
+          }}
+        >
+            <Text style={styles.btnRegistro}>CRIAR CONTA</Text>
+        </TouchableOpacity>
+      </View>
 
     </SafeAreaView>
   );
@@ -37,17 +69,17 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2e2e2e',
-    padding: 15
+    backgroundColor: '#fff',
+    padding: 16
   },
   topo: {
     alignItems: "center"
   },
   login: {
-    width: 350
+    width: "50%"
   },
   texto: {
-    color: "white",
+    color: "black",
     fontSize: 28,
     fontWeight: '500',
     marginBottom: 30,
@@ -58,25 +90,51 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
     borderBottomWidth: 1,
     paddingBottom: 8,
-    marginBottom: 25,
+    marginBottom: 20,
     alignItems: 'center'
   },
 
   textInput:{
     padding: 10,
-    color: 'white'
+    color: "black",
+    width: '100%'
   },
 
   btnLogin:{
-    backgroundColor: '33480eb',
+    backgroundColor: '#3480EB',
     padding: 20,
     borderRadius: 10,
-    marginBottom: 30
+    marginBottom: 15
   },
   txtLogin:{
     textAlign: 'center',
-    fontWeight: 700,
     fontSize: 16,
     color: '#fff'
+  },
+
+  logarcom:{
+    textAlign: "center",
+    color: "#666",
+    marginBottom: 15
+  },
+
+  botoes:{
+    flexDirection: "row",
+    justifyContent: "center",
+    marginBottom: 15
+  },
+
+  btnLoginCom:{
+    borderColor: "#DDD",
+    borderWidth: 2,
+    borderRadius: 10,
+    paddingHorizontal: 30,
+    paddingVertical: 10,
+    marginRight: 10
+  },
+
+  btnRegistro:{
+    color: "#3480EB",
+    fontWeight: '700'
   }
 });
